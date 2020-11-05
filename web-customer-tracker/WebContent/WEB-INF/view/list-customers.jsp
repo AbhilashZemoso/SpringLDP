@@ -28,12 +28,20 @@
 			onclick="window.location.href='showFormForAdd';return false;"
 			class="add-button"
 			/>
-			
+			<c:url var="listCustomerByFirstName" value="/customer/list">
+				<c:param name="orderBy" value="firstName" />
+			</c:url>
+			<c:url var="listCustomerByLastName" value="/customer/list">
+				<c:param name="orderBy" value="lastName" />
+			</c:url>
+			<c:url var="listCustomerByEmail" value="/customer/list">
+				<c:param name="orderBy" value="email" />
+			</c:url>
 			<table>
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
+					<th><a href="${listCustomerByFirstName}">First Name</a></th>
+					<th><a href="${listCustomerByLastName}">Last Name</a></th>
+					<th><a href="${listCustomerByEmail}">Email</a></th>
 					<th>Action</th>
 				</tr>			
 				<c:forEach var="tempCustomer" items="${customers}">

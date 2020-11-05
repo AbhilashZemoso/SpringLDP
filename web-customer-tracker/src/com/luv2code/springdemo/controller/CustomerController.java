@@ -22,9 +22,14 @@ public class CustomerController {
 	private CustomerService customerService;
 	
 	@GetMapping("/list")
-	public String listCustomers(Model theModel) {
+	public String listCustomers(@RequestParam(required = false) String orderBy,Model theModel) {
 
-		List<Customer> theCustomers = customerService.getCustomers();
+		List<Customer> theCustomers;
+		
+		if(orderBy!=null)
+			theCustomers = customerService.getCustomers(orderBy);
+		else 
+			theCustomers = customerService.getCustomers();
 		
 		theModel.addAttribute("customers",theCustomers);
 		
