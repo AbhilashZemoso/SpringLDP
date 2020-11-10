@@ -1,0 +1,5 @@
+package com.zemoso.mycoolapp.rest;
+
+public class FunRestController {
+
+}

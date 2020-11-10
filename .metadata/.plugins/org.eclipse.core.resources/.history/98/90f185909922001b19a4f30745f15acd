@@ -1,0 +1,4 @@
+info.app.name=My App
+info.app.description=My First Demo App
+
+management.endpoints.web.exposure.include=*

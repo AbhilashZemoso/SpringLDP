@@ -27,7 +27,7 @@ public class GetInstructorDetailDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			int theId = 2;
+			int theId = 4;
 			
 			InstructorDetail tempInstructorDetail = 
 					session.get(InstructorDetail.class, theId);
