@@ -14,6 +14,9 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\spring-crm-rest-demo"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\spring-rest-demo"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\jackson-databinding-json-demo"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\spring-security-demo-01-base-app"/>
 			<item value="C:\Users\Abhilash\Downloads\spring-and-hibernate-for-beginners-master\07-spring-security-5\solution-code-spring-security-demo-01-base-app"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\thymeleafdemo"/>
