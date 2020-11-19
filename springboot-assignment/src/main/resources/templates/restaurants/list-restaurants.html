@@ -27,6 +27,10 @@
 		  background-repeat: no-repeat;
 		  background-size: cover;
 		}
+		
+		a{
+		  color: white;
+		}
 	</style>
 </head>
 
@@ -56,8 +60,8 @@
 	<table class="table table-bordered table-striped">
 		<thead class="thead-dark">
 			<tr>
-				<th>Name</th>
-				<th>City</th>
+				<th><a th:href="@{/restaurants/list(orderBy='name')}">Name</a></th>
+				<th><a th:href="@{/restaurants/list(orderBy='city')}">City</a></th>
 				<th>Web site</th>
 				<th sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')">Details</th>				
 				<th sec:authorize="hasAnyRole('ROLE_INSPECTOR')">Action</th>

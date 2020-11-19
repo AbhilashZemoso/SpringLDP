@@ -8,9 +8,13 @@ public interface RestaurantService {
 	
 	public List<Restaurant> findAll();
 	
+	public List<Restaurant> findAllByOrderByNameAsc();
+	
 	public Restaurant findById(int theId);
 	
 	public void save(Restaurant theRestaurant);
 	
 	public void deleteById(int theId);
+
+	List<Restaurant> findAllByOrderByCityAsc();
 }

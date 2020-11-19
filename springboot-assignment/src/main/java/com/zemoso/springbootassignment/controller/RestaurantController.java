@@ -29,11 +29,18 @@ public class RestaurantController {
 	// add mapping for "/list"
 
 	@GetMapping("/list")
-	public String listRestaurants(Model theModel) {
+	public String listRestaurants(@RequestParam(required = false) String orderBy,Model theModel) {
 		
-		// get restaurants from db
-		List<Restaurant> theRestaurants = restaurantService.findAll();
-		
+		List<Restaurant> theRestaurants=null;
+		if(orderBy==null) {
+			theRestaurants = restaurantService.findAll();
+		}
+		else if(orderBy.equals("name")){
+			theRestaurants = restaurantService.findAllByOrderByNameAsc();
+		}
+		else if(orderBy.equals("city")){
+			theRestaurants = restaurantService.findAllByOrderByCityAsc();
+		}
 		// add to the spring model
 		theModel.addAttribute("restaurants", theRestaurants);
 		

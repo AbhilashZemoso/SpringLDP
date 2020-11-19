@@ -23,6 +23,17 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<Restaurant> findAll() {
 		return restaurantRepository.findAll();
 	}
+	
+	@Override
+	public List<Restaurant> findAllByOrderByNameAsc() {
+		return restaurantRepository.findAllByOrderByNameAsc();
+	}
+	
+	@Override
+	public List<Restaurant> findAllByOrderByCityAsc() {
+		return restaurantRepository.findAllByOrderByCityAsc();
+	}
+	
 
 	@Override
 	public Restaurant findById(int theId) {
