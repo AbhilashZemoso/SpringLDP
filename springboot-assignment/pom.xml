@@ -21,7 +21,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- Security 
+		<!-- Security -->
 		<dependency>
 		  <groupId>org.springframework.security</groupId>
 		  <artifactId>spring-security-web</artifactId>
@@ -33,7 +33,11 @@
 		  <artifactId>spring-security-config</artifactId>
 		  <version>${springsecurity.version}</version>
 		</dependency>
-		-->
+		
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
 	
 		<!-- Starter for using Spring Data JPA with Hibernate -->
 		<dependency>

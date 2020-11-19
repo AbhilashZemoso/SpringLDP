@@ -14,6 +14,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Abhilash\Downloads\spring-and-hibernate-for-beginners-master\14-spring-boot-thymeleaf\bonus-thymeleafdemo-employees-security-with-jdbc-authentication"/>
 			<item value="C:\Users\Abhilash\Downloads\spring-and-hibernate-for-beginners-master\01-spring-core-5\solution-code-spring-java-config-define-beans"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\spring-crm-rest-demo"/>
 			<item value="C:\Users\Abhilash\Downloads\spring-and-hibernate-for-beginners-master\solution-code-spring-crm-rest-demo-get-all-customers"/>
@@ -28,7 +29,6 @@
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\sampleTwo"/>
 			<item value="C:\Users\Abhilash\Downloads\sampleThree\sampleThree"/>
 			<item value="C:\Users\Abhilash\Downloads\sampleTwo\sampleTwo"/>
-			<item value="C:\Users\Abhilash\Downloads\sample"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
