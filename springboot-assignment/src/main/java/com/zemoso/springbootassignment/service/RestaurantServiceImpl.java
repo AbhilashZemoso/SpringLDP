@@ -34,6 +34,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return restaurantRepository.findAllByOrderByCityAsc();
 	}
 	
+	@Override
+	public List<Restaurant> findAllByOrderByRatingDesc() {
+		return restaurantRepository.findAllByOrderByRatingDesc();
+	}
+	
 
 	@Override
 	public Restaurant findById(int theId) {

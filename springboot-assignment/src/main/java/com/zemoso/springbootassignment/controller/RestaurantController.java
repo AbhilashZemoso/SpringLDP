@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.zemoso.springbootassignment.entity.Restaurant;
 import com.zemoso.springbootassignment.service.RestaurantService;
 
@@ -41,6 +40,9 @@ public class RestaurantController {
 		}
 		else if(orderBy.equals("city")){
 			theRestaurants = restaurantService.findAllByOrderByCityAsc();
+		}
+		else if(orderBy.equals("rating")){
+			theRestaurants = restaurantService.findAllByOrderByRatingDesc();
 		}
 		// add to the spring model
 		theModel.addAttribute("restaurants", theRestaurants);

@@ -74,6 +74,7 @@
 				<th><a th:href="@{/restaurants/list(orderBy='name')}">Name</a></th>
 				<th><a th:href="@{/restaurants/list(orderBy='city')}">City</a></th>
 				<th>Web site</th>
+				<th><a th:href="@{/restaurants/list(orderBy='rating')}">Rating</a></th>
 				<th sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')">Details</th>				
 				<th sec:authorize="hasAnyRole('ROLE_INSPECTOR')">Action</th>
 			</tr>
@@ -84,7 +85,8 @@
 			
 				<td th:text="${tempRestaurant.name}" />
 				<td th:text="${tempRestaurant.city}" />	
-				<td><a href="#" class="btn" style="border:none;" th:text="${tempRestaurant.website}" /></td>	
+				<td><a href="#" class="btn" style="border:none;" th:text="${tempRestaurant.website}" /></td>
+				<td th:text="${tempRestaurant.rating}" />		
 				<td sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')" th:text="${tempRestaurant.details}" />	
 				<td sec:authorize="hasAnyRole('ROLE_INSPECTOR')">
 					<a th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}"
@@ -101,7 +103,8 @@
 		</tbody>		
 	</table>
 	
-	
+	<br>
+	<br>
 	
 </div>
 	

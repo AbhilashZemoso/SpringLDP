@@ -19,4 +19,6 @@ public interface RestaurantService {
 	List<Restaurant> findAllByOrderByCityAsc();
 
 	public List<Restaurant> searchBy(String theName);
+
+	List<Restaurant> findAllByOrderByRatingDesc();
 }
