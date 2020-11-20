@@ -6,6 +6,12 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Abhilash\Downloads\spring-and-hibernate-for-beginners-master\14-spring-boot-thymeleaf\bonus-thymeleafdemo-employees-security-with-jdbc-authentication"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\web-customer-tracker"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\spring-security-demo-08-jdbc-plaintext"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\37-thymeleafdemo-employees-delete"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\springboot-assignment"/>
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\spring-mvc-demo"/>
 			<item value="C:\Users\Abhilash\Downloads\spring-and-hibernate-for-beginners-master\01-spring-core-5\solution-code-spring-java-config-define-beans"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\hb-01-one-to-one-uni"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace"/>

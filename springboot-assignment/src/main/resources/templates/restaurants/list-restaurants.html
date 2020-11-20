@@ -50,11 +50,22 @@
 	<h3>Restaurant Directory</h3>
 	<hr>
 	
-	<!-- Add a button -->
-	<a sec:authorize="hasAnyRole('ROLE_INSPECTOR','ROLE_VIP')" th:href="@{/restaurants/showFormForAdd}"
-		class="btn btn-primary btn-sm mb-3">
-		Add Restaurant
-	</a>
+	<form th:action="@{/restaurants/search}" class="form-inline">
+		<div style="width:100%;">
+			<!-- Add a button -->
+			<a sec:authorize="hasAnyRole('ROLE_INSPECTOR','ROLE_VIP')" th:href="@{/restaurants/showFormForAdd}"
+				class="btn btn-primary btn-sm mb-3">
+				Add Restaurant
+			</a>
+			
+			
+			<button class="btn btn-success mb-3 float-right" type="submit">Search</button>
+			<input style="margin:0;" class="form-control  ml-5 mr-sm-2 mb-3 float-right" type="search" 
+			name="nameOrCity" placeholder="Search by name or city" />
+		</div>
+    </form>	
+	
+	
 	
 	
 	<table class="table table-bordered table-striped">
@@ -73,8 +84,8 @@
 			
 				<td th:text="${tempRestaurant.name}" />
 				<td th:text="${tempRestaurant.city}" />	
-				<td sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')" th:text="${tempRestaurant.website}" />	
-				<td th:text="${tempRestaurant.details}" />	
+				<td><a href="#" class="btn" style="border:none;" th:text="${tempRestaurant.website}" /></td>	
+				<td sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')" th:text="${tempRestaurant.details}" />	
 				<td sec:authorize="hasAnyRole('ROLE_INSPECTOR')">
 					<a th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}"
 						class="btn btn-info btn-sm">

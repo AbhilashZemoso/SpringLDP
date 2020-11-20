@@ -57,6 +57,20 @@ public class RestaurantServiceImpl implements RestaurantService {
 		restaurantRepository.deleteById(theId);
 	}
 
+	@Override
+	public List<Restaurant> searchBy(String theName) {
+		
+		List<Restaurant> results = null;
+		
+		if (theName != null && (theName.trim().length() > 0)) {
+			results = restaurantRepository.findByNameContainsOrCityContainsAllIgnoreCase(theName, theName);
+		}
+		else {
+			results = findAll();
+		}
+		
+		return results;
+	}
 }
 
 

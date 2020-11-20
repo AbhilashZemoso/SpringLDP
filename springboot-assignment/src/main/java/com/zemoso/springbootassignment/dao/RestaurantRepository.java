@@ -11,4 +11,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 	public List<Restaurant> findAllByOrderByNameAsc();
 	
 	public List<Restaurant> findAllByOrderByCityAsc();
+
+	public List<Restaurant> findByNameContainsOrCityContainsAllIgnoreCase(String theName, String City);
+
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.zemoso.springbootassignment.entity.Restaurant;
 import com.zemoso.springbootassignment.service.RestaurantService;
 
@@ -95,6 +96,16 @@ public class RestaurantController {
 		
 		// use a redirect to prevent duplicate submissions
 		return "redirect:/restaurants/list";
+	}
+	
+	@GetMapping("/search")
+	public String search(@RequestParam("nameOrCity") String theName,
+						 Model theModel) {
+		
+		List<Restaurant> theRestaurants = restaurantService.searchBy(theName);
+		theModel.addAttribute("restaurants", theRestaurants);
+		return "/restaurants/list-restaurants";
+		
 	}
 	
 	

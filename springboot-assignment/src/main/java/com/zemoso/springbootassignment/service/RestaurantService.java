@@ -17,4 +17,6 @@ public interface RestaurantService {
 	public void deleteById(int theId);
 
 	List<Restaurant> findAllByOrderByCityAsc();
+
+	public List<Restaurant> searchBy(String theName);
 }
