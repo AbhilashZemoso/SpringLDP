@@ -1,5 +1,8 @@
 package com.zemoso.springbootassignment.securityconfig;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,16 +18,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Provides a convenient base class for creating a WebSecurityConfigurer instance.
 	 *  The implementation allows customization by overriding methods.
 	 */
+	
+    @Autowired
+    private DataSource securityDataSource;
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		UserBuilder users = User.withDefaultPasswordEncoder();
-		
-		auth.inMemoryAuthentication()
-			.withUser(users.username("john").password("test123").roles("CUSTOMER"))
-			.withUser(users.username("mary").password("test123").roles("VIP"))
-			.withUser(users.username("susan").password("test123").roles("INSPECTOR"));
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(securityDataSource);
+    }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
