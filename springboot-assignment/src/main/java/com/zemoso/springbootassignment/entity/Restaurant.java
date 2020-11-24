@@ -31,7 +31,7 @@ public class Restaurant {
 	private String name;
 	
 	@NotEmpty(message="is required")
-	@Pattern(regexp = "^[a-zA-Z ]*$", message="must contain only alphabets")
+	@Pattern(regexp = "^[a-zA-Z,0-9 ]*$", message="must not contain special characters")
 	@Column(name="city")
 	private String city;
 	

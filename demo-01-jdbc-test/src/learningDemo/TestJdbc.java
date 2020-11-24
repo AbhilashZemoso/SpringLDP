@@ -2,6 +2,8 @@ package learningDemo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
+
 
 public class TestJdbc {
 
@@ -16,6 +18,13 @@ public class TestJdbc {
 			Connection myConn = DriverManager.getConnection(jdbcUrl, user, pass);
 			
 			System.out.println("Connection established");
+			
+			Statement theQuery = myConn.createStatement();
+			
+			System.out.println(theQuery.executeUpdate
+					("INSERT INTO hb_student_tracker.student VALUES (13,\"Trial2\",\"Attempt2\",\"fake2@gmail.com\")"));
+			
+			theQuery.close();
 			
 		}
 		catch(Exception e) {
