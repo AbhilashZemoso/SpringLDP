@@ -99,18 +99,36 @@ body {
 </head>
 <body>
 <div class="signup-form">	
-    <form action="/examples/actions/confirmation.php" method="post">
+	<form action="#" th:action="@{/saveSignUp}"
+						 th:object="${userdetails}" method="POST">
 		<h2>Create Account</h2>
+		<div th:if="${#fields.hasErrors('password') || #fields.hasErrors('username')}" >							
+			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+			<ul>
+				<li th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></li>
+				<li th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></li>
+			</ul>				
+			</div>
+		</div>
+		<div th:if="${param.missmatch}">								            
+			<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+				Password not matched.
+			</div>								    
+		</div>	
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input type="text" class="form-control" th:field="*{username}"
+				 placeholder="Username" required="required">
+				 
 			</div>
         </div>
-		<div class="form-group">
+		    <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-				<input type="text" class="form-control" name="password" placeholder="Password" required="required">
+				<input type="password" class="form-control" th:field="*{password}"
+					 placeholder="Password" required="required">
+				 
 			</div>
         </div>
 		<div class="form-group">
@@ -119,9 +137,11 @@ body {
 					<i class="fa fa-lock"></i>
 					<i class="fa fa-check"></i>
 				</span>
-				<input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+				<input type="password" class="form-control" name="confirm_password"
+				 th:field="*{confirmpassword}" placeholder="Confirm Password" required="required">
+				 <i style="display:inline;" th:if="${#fields.hasErrors('confirmpassword')}" th:errors="*{confirmpassword}"></i>
 			</div>
-        </div>        
+        </div>   
 		<div class="form-group">
             <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
         </div>
