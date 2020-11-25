@@ -45,6 +45,7 @@
 				<div>		
 				<input style="display:inline;" type="text" th:field="*{website}"
 						class="form-control mb-4 col-4" placeholder="Website">
+						<i style="display:inline;" th:if="${#fields.hasErrors('website')}" th:errors="*{website}"></i>
 				</div>
 				<div>		
 				<input style="display:inline;" type="text" th:field="*{rating}"

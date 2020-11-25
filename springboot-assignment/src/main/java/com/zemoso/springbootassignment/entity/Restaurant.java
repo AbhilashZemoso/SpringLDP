@@ -36,6 +36,8 @@ public class Restaurant {
 	private String city;
 	
 	@Column(name="website")
+	@Pattern(regexp="[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)",
+			message="not a valid website")
 	private String website;
 	
 	@Size(min=0,max=200,message="upto {max} characters are allowed")
