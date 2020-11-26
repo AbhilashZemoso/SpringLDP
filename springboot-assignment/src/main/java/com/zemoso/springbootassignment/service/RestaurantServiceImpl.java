@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.zemoso.springbootassignment.dao.RestaurantRepository;
 import com.zemoso.springbootassignment.entity.Restaurant;
+import com.zemoso.springbootassignment.entity.Review;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -76,6 +79,36 @@ public class RestaurantServiceImpl implements RestaurantService {
 		
 		return results;
 	}
+	
+	@Override
+	public String getUsername() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		return username;
+	}
+
+	@Override
+	public List<Review> findAllReviews(int theId) {
+		Restaurant theRestaurant = findById(theId);
+		List<Review> reviews = theRestaurant.getReviews();
+		return reviews;
+	}
+
+	@Override
+	public void addReview(Review theReview) {
+		int theId = theReview.getRestaurant_id();
+		Restaurant theRestaurant = findById(theId);
+		theRestaurant.addReview(theReview);
+		save(theRestaurant);		
+	}
+
+	@Override
+	public String getRestaurantName(int theId) {
+		Restaurant theRestaurant = findById(theId);
+		String name = theRestaurant.getName();
+		return name;
+	}
+	
 }
 
 

@@ -6,6 +6,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Abhilash\eclipse-ee-workspace\hb-04-one-to-many-uni"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\hibernate-tutorial"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\22-jpa-cruddemo"/>
 			<item value="C:\Users\Abhilash\eclipse-ee-workspace\demo-01-jdbc-test"/>

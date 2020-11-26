@@ -28,7 +28,7 @@
 		  background-size: cover;
 		}
 		
-		a{
+		th a{
 		  color: white;
 		}
 	</style>
@@ -75,7 +75,7 @@
 				<th><a th:href="@{/restaurants/list(orderBy='city')}">Address</a></th>
 				<th>Web site</th>
 				<th><a th:href="@{/restaurants/list(orderBy='rating')}">Rating</a></th>
-				<th sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')">Details</th>				
+				<th>Details</th>				
 				<th sec:authorize="hasAnyRole('ROLE_INSPECTOR')">Action</th>
 			</tr>
 		</thead>
@@ -87,9 +87,11 @@
 				<td th:text="${tempRestaurant.city}" />	
 				<td><a href="#" class="btn" style="border:none;" th:text="${tempRestaurant.website}" /></td>
 				<td th:text="${tempRestaurant.rating}" />		
-				<td sec:authorize="hasAnyRole('ROLE_VIP','ROLE_INSPECTOR')" th:text="${tempRestaurant.details}" />	
+				<td><span th:text="${tempRestaurant.details}"></span>
+					<br><a th:href="@{/restaurants/reviews(id=${tempRestaurant.id})}">See Reviews</a>
+				</td>	
 				<td sec:authorize="hasAnyRole('ROLE_INSPECTOR')">
-					<a th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}"
+					<a  th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}"
 						class="btn btn-info btn-sm">
 						Update 
 					</a>

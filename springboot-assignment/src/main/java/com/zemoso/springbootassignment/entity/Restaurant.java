@@ -1,10 +1,16 @@
 package com.zemoso.springbootassignment.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
@@ -12,7 +18,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
 
 @Entity
 @Table(name="restaurant")
@@ -50,6 +55,9 @@ public class Restaurant {
 	@Column(name="rating")
 	private float rating;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="restaurant_id")
+	private List<Review> reviews;
 		
 	// define constructors
 	
@@ -122,6 +130,20 @@ public class Restaurant {
 		this.rating = rating;
 	}
 
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public void addReview(Review theReview) {
+		if(reviews==null)
+			reviews = new ArrayList<>();
+		
+		reviews.add(theReview);
+	}
 
 	@Override
 	public String toString() {

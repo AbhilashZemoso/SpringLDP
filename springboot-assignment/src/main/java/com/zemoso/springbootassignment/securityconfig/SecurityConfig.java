@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/restaurants/save*").hasAnyRole("INSPECTOR","VIP")
 			.antMatchers("/restaurants/delete*").hasRole("INSPECTOR")
 			.antMatchers("/restaurants/list").hasAnyRole("VIP", "INSPECTOR","CUSTOMER")
+			.antMatchers("/restaurants/review**").hasAnyRole("VIP", "INSPECTOR","CUSTOMER")
 			.antMatchers("/api/**").permitAll()
 			.and()
 			.formLogin()
