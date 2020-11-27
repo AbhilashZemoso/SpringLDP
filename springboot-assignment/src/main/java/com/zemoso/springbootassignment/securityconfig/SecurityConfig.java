@@ -29,17 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		/*http.authorizeRequests()
-				.anyRequest().authenticated()
-			.and()
-			.formLogin()
-				.loginPage("/showMyLoginPage")
-				.loginProcessingUrl("/authenticateTheUser")
-				.permitAll()
-			.and()
-			.logout()
-				.permitAll();
-		*/
 		http.authorizeRequests()
 			.antMatchers("/restaurants/showForm*").hasAnyRole("INSPECTOR","VIP")
 			.antMatchers("/restaurants/save*").hasAnyRole("INSPECTOR","VIP")

@@ -12,22 +12,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	
 	<title>Restaurant Reviews</title>
 	<style>		
 		body, html {
 		  height: 100%;
-		}
-		
-		.reviewBy{
-			display:inline-block;
-			padding:5px;
-		}
-		.content{
-			display:inline-block;
-			border:solid 1px grey;
-			width:500px;
-			height:80px;
-			border-radius:5px;
 		}
 		p{
 			padding:5px;
@@ -51,12 +41,12 @@
 	<h5>Reviews</h5>
 	<hr>
 		<div style="padding:20px;" th:each="tempReview : ${reviews}">			
-			<div class="h6 reviewBy"><p th:text="${tempReview.username}" /></div>
-			<div class="content"><p th:text="${tempReview.feedback}" /></div>					
+			<div class="h5 reviewBy"><p th:text="${tempReview.username}" /></div>
+			<div class="content border-box"><p th:text="${tempReview.feedback}" /></div>					
 		</div>
 		<br>
 		<!--<div sec:authorize="hasAnyRole('ROLE_INSPECTOR')"> -->
-		<div>
+		<div  class="my-review">
 		<form action="#" th:action="@{/restaurants/addReview}"
 				th:object="${review}" method="POST">
 			<input  type="hidden" th:field="*{id}">					
@@ -65,15 +55,17 @@
 			<div>
 			<input type="text" th:field="*{feedback}"
 					class="form-control mb-4 col-4" placeholder="Add your review">
-			</div>			
-			
+			</div>				
 			<button  type="submit" class="btn btn-info col-2">Add Review</button>
 		</form>
+		
+		<br>
+		<a th:href="@{/restaurants/list}">Back to Restaurants List</a>
+		<br>
+		
 		</div>
 	
-	<br>
-	<a th:href="@{/restaurants/list}">Back to Restaurants List</a>
-	<br>
+	
 	<br>
 	
 </div>

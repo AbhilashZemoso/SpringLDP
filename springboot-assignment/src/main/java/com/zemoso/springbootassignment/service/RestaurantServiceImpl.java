@@ -68,7 +68,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Override
 	public List<Restaurant> searchBy(String theName) {
 		
-		List<Restaurant> results = null;
+		List<Restaurant> results;
 		
 		if (theName != null && (theName.trim().length() > 0)) {
 			results = restaurantRepository.findByNameContainsOrCityContainsAllIgnoreCase(theName, theName);
