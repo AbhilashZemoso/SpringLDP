@@ -51,6 +51,14 @@
 	</div>
 	<div th:each="tempRestaurant : ${restaurants}">
             <div class="restaurant border-box">
+            	<div class="action-icon" sec:authorize="hasAnyRole('ROLE_INSPECTOR')">
+                    <a th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}">
+                    <img  class="select-icon"  src="/icons/edit-big.png" /></a>
+                    <br>
+                    <a th:href="@{/restaurants/delete(restaurantId=${tempRestaurant.id})}"
+                     onclick="if(!(confirm('Are you sure you want to delete this Restaurant?'))) return false">
+                     <img class="select-icon" src="/icons/delete-big.png" /></a>
+                </div>
                 <div class="upper-left">
                     <p th:text="${tempRestaurant.name}" class="name h3">Name</p>
                     <p th:text="${tempRestaurant.city}" class="address">City</p>
@@ -74,16 +82,6 @@
                 <br>
                 <a class="review dull-font" th:href="@{/restaurants/reviews(id=${tempRestaurant.id})}">See Reviews</a>
                 <br>
-                <div sec:authorize="hasAnyRole('ROLE_INSPECTOR')" class="action">
-                    <a th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}"
-                     class="btn btn-info btn-sm">
-                        Update  
-                    </a>
-                    <a th:href="@{/restaurants/delete(restaurantId=${tempRestaurant.id})}"
-                     class="btn btn-danger btn-sm" onclick="if(!(confirm('Are you sure you want to delete this Restaurant?'))) return false">
-                        Delete
-                    </a>
-                </div>
             </div>
         </div>
         
