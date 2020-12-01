@@ -45,12 +45,6 @@ public class RestaurantController {
 		if(orderBy==null) {
 			theRestaurants = restaurantService.findAll();
 		}
-		else if(orderBy.equals("name")){
-			theRestaurants = restaurantService.findAllByOrderByNameAsc();
-		}
-		else if(orderBy.equals("city")){
-			theRestaurants = restaurantService.findAllByOrderByCityAsc();
-		}
 		else if(orderBy.equals("rating")){
 			theRestaurants = restaurantService.findAllByOrderByRatingDesc();
 		}

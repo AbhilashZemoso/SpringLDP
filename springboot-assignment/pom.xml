@@ -47,10 +47,8 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
-		<scope>test</scope>
-				
-		
-</dependency>
+		    <scope>test</scope>
+        </dependency>
 	
 		<!-- Starter for using Spring Data JPA with Hibernate -->
 		<dependency>
@@ -112,6 +110,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.10</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>

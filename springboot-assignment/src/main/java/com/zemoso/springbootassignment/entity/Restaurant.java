@@ -1,5 +1,9 @@
 package com.zemoso.springbootassignment.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="restaurant")
+@Getter @Setter @NoArgsConstructor
 public class Restaurant {
 
 	// define fields
@@ -58,13 +63,7 @@ public class Restaurant {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="restaurant_id")
 	private List<Review> reviews;
-		
-	// define constructors
-	
-	public Restaurant() {
-		
-	}
-	
+
 
 	public Restaurant(int id, @Valid @NotEmpty(message = "is required") String name,
 			@NotEmpty(message = "is required") @Pattern(regexp = "^[a-zA-Z ]*$", message = "must contain only alphabets") String city,
@@ -78,70 +77,9 @@ public class Restaurant {
 		this.rating = rating;
 	}
 
-
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getWebsite() {
-		return website;
-	}
-
-	public void setWebsite(String website) {
-		this.website = website;
-	}
-
-	public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
-
-	public float getRating() {
-		return rating;
-	}
-
-
-	public void setRating(float rating) {
-		this.rating = rating;
-	}
-
-	public List<Review> getReviews() {
-		return reviews;
-	}
-	
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
-	}
-
 	public void addReview(Review theReview) {
 		if(reviews==null)
 			reviews = new ArrayList<>();
-		
 		reviews.add(theReview);
 	}
 
@@ -151,14 +89,3 @@ public class Restaurant {
 				+ details + ", rating=" + rating + "]";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
