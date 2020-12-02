@@ -48,17 +48,16 @@ public class Restaurant {
 	@Min(1)
 	@Max(10)
 	@Column(name="rating")
-	private float rating;
+	private double rating;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="restaurant_id")
 	private List<Review> reviews;
 
-
 	public Restaurant(int id, @Valid @NotEmpty(message = "is required") String name,
 			@NotEmpty(message = "is required") @Pattern(regexp = "^[a-zA-Z ]*$", message = "must contain only alphabets") String city,
 			String website, @Size(min = 0, max = 200, message = "upto {max} characters are allowed") String details,
-			@NotEmpty(message = "is required") int rating) {
+			@NotEmpty(message = "is required") double rating) {
 		this.id = id;
 		this.name = name;
 		this.city = city;
