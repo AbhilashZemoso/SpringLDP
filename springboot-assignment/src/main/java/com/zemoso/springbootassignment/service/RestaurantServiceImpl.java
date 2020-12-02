@@ -24,21 +24,21 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> findAll() {
+    public List<Restaurant> findAll() throws RuntimeException {
         return restaurantRepository.findAll();
     }
 
     @Override
-    public List<Restaurant> findAllByOrderByRatingDesc() {
+    public List<Restaurant> findAllByOrderByRatingDesc()  throws RuntimeException{
         //return restaurantRepository.findAllByOrderByRatingDesc();
         return restaurantRepository.findAll(Sort.by(Sort.Direction.DESC,"rating"));
     }
 
 
     @Override
-    public Restaurant findById(int theId) {
+    public Restaurant findById(int theId)  throws RuntimeException{
         Optional<Restaurant> result = restaurantRepository.findById(theId);
-        Restaurant theRestaurant = null;
+        Restaurant theRestaurant;
         if (result.isPresent())
             theRestaurant = result.get();
         else {
@@ -48,17 +48,17 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public void save(Restaurant theRestaurant) {
+    public void save(Restaurant theRestaurant)  throws RuntimeException {
         restaurantRepository.save(theRestaurant);
     }
 
     @Override
-    public void deleteById(int theId) {
+    public void deleteById(int theId) throws RuntimeException {
         restaurantRepository.deleteById(theId);
     }
 
     @Override
-    public List<Restaurant> searchBy(String theName) {
+    public List<Restaurant> searchBy(String theName)  throws RuntimeException{
 
         List<Restaurant> results;
 
@@ -72,21 +72,21 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public String getUsername() {
+    public String getUsername()  throws RuntimeException{
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         return username;
     }
 
     @Override
-    public List<Review> findAllReviews(int theId) {
+    public List<Review> findAllReviews(int theId)  throws RuntimeException{
         Restaurant theRestaurant = findById(theId);
         List<Review> reviews = theRestaurant.getReviews();
         return reviews;
     }
 
     @Override
-    public void addReview(Review theReview) {
+    public void addReview(Review theReview)  throws RuntimeException{
         int theId = theReview.getRestaurant_id();
         Restaurant theRestaurant = findById(theId);
         theRestaurant.addReview(theReview);
@@ -94,7 +94,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public String getRestaurantName(int theId) {
+    public String getRestaurantName(int theId)  throws RuntimeException{
         Restaurant theRestaurant = findById(theId);
         String name = theRestaurant.getName();
         return name;

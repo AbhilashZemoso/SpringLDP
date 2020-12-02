@@ -1,21 +1,12 @@
 package com.zemoso.springbootassignment.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -25,10 +16,9 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="restaurant")
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @ToString
 public class Restaurant {
 
-	// define fields
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -47,7 +37,7 @@ public class Restaurant {
 	
 	//"^[www.]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
 	@Column(name="website")
-	@Pattern(regexp="^(www.|http://|https://)[a-zA-Z0-9@:%_-|\\+.~#?&//=]+(.com|.in|.info)[a-zA-Z0-9@:%_-|\\\\+.~#?&//=]*",
+	@Pattern(regexp="(^(www.|http://|https://)[a-zA-Z0-9@:%_-|\\+.~#?&//=]+(.com|.in|.info)[a-zA-Z0-9@:%_-|\\\\+.~#?&//=]*|)",
 			message="not a valid website")
 	private String website;
 	
@@ -83,9 +73,25 @@ public class Restaurant {
 		reviews.add(theReview);
 	}
 
-	@Override
-	public String toString() {
-		return "Restaurant [id=" + id + ", name=" + name + ", city=" + city + ", website=" + website + ", details="
-				+ details + ", rating=" + rating + "]";
-	}
+    @PrePersist
+    public void onPrePersist() {
+
+        Logger myLogger =
+                Logger.getLogger(getClass().getName());
+        myLogger.info("\n$$$$$$ Restaurant INSERTED $$$$$$");
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        Logger myLogger =
+                Logger.getLogger(getClass().getName());
+        myLogger.info("\n$$$$$$ Restaurant UPDATED $$$$$$");
+    }
+
+    @PreRemove
+    public void onPreRemove() {
+        Logger myLogger =
+                Logger.getLogger(getClass().getName());
+        myLogger.info("\n$$$$$$ Restaurant DELETED $$$$$$");
+    }
 }

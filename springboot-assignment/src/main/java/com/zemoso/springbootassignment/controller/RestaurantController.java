@@ -28,15 +28,11 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService restaurantService;
 	
-	@Autowired
-    private DataSource securityDataSource;
-	
 	
 	public RestaurantController(RestaurantService theRestaurantService) {
 		restaurantService = theRestaurantService;
 	}
-	
-	// add mapping for "/list"
+
 
 	@GetMapping("/list")
 	public String listRestaurants(@RequestParam(required = false) String orderBy,Model theModel) {
@@ -48,7 +44,6 @@ public class RestaurantController {
 		else if(orderBy.equals("rating")){
 			theRestaurants = restaurantService.findAllByOrderByRatingDesc();
 		}
-		// add to the spring model
 		theModel.addAttribute("restaurants", theRestaurants);
 		
 		return "restaurants/list-restaurants";
@@ -68,15 +63,12 @@ public class RestaurantController {
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("restaurantId") int theId,
 									Model theModel) {
-		
-		// get the restaurant from the service
+
 		Restaurant theRestaurant = restaurantService.findById(theId);
-		
-		// set restaurant as a model attribute to pre-populate the form
+
 		theModel.addAttribute("restaurant", theRestaurant);
 		
-		// send over to our form
-		return "restaurants/restaurant-form";			
+		return "restaurants/restaurant-form";
 	}
 	
 	
@@ -88,10 +80,8 @@ public class RestaurantController {
 		if(theBindingResult.hasErrors()) {
 			return "restaurants/restaurant-form";
 		}
-		// save the restaurant
 		restaurantService.save(theRestaurant);
-		
-		// use a redirect to prevent duplicate submissions
+
 		return "redirect:/restaurants/list";
 	}
 	
@@ -99,8 +89,7 @@ public class RestaurantController {
 	public String delete(@RequestParam("restaurantId") int theId) {
 		
 		restaurantService.deleteById(theId);
-		
-		// use a redirect to prevent duplicate submissions
+
 		return "redirect:/restaurants/list";
 	}
 	
@@ -132,7 +121,6 @@ public class RestaurantController {
 		restaurantService.addReview(theReview);
 		return "redirect:/restaurants/reviews?id="+theReview.getRestaurant_id();
 	}
-	
 }
 
 

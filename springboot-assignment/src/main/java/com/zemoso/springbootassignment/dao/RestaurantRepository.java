@@ -7,12 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.zemoso.springbootassignment.entity.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
-	
-	public List<Restaurant> findAllByOrderByNameAsc();
-	
-	public List<Restaurant> findAllByOrderByCityAsc();
 
-	public List<Restaurant> findByNameContainsOrCityContainsAllIgnoreCase(String theName, String City);
-
-	public List<Restaurant> findAllByOrderByRatingDesc();
+    public List<Restaurant> findByNameContainsOrCityContainsAllIgnoreCase(String theName, String City);
 }

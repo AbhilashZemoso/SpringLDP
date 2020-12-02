@@ -14,7 +14,7 @@ public class LoggingAspect {
     private Logger myLogger =
             Logger.getLogger(getClass().getName());
 
-    @Around("execution(* findAll())")
+    @Around("within(com.zemoso.springbootassignment..*)")
     public Object logging(
             ProceedingJoinPoint theProceedingJointPoint) throws Throwable{
         String method = theProceedingJointPoint.getSignature().toShortString();
@@ -25,11 +25,11 @@ public class LoggingAspect {
             result = theProceedingJointPoint.proceed();
         }
         catch (Exception e){
-            myLogger.warning(e.getMessage());
+            myLogger.warning("\n!!!!!EXCEPTION!!!!!!\n" +
+                    "method: "+method+"\nerror: "+e.getMessage());
             result=null;
         }
-        myLogger.info("\n====>>>> Method returned");
-
+        myLogger.info("\n====>>>> Method returned: "+method);
         return result;
     }
 }
